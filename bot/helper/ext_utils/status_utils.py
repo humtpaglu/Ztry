@@ -274,17 +274,19 @@ async def get_readable_message(
                 else task.progress()
             )
             msg += (
-                f"\n{get_progress_bar_string(progress)} » <b><i>{progress}</i></b>"
-                f"\n<code>Status :</code> <b>{tstatus}</b>"
-                f"\n<code>Done   :</code> {task.processed_bytes()} of {task.size()}"
-                f"\n<code>Speed  :</code> {task.speed()}"
-                f"\n<code>ETA    :</code> {task.eta()}"
-                f"\n<code>Past   :</code> {elapsed}"
-                f"\n<code>User   :</code> <b>{user_tag}</b>"
-                f"\n<code>UserID :</code> ||{task.listener.user_id}||"
-                f"\n<code>Upload :</code> {task.listener.mode}"
-                f"\n<code>Engine :</code> <b><i>{task.engine}</i></b>"
-            )
+                   f"\n<blockquote>"
+                   f"\n{get_progress_bar_string(progress)} » <b><i>{progress}</i></b>"
+                   f"\n<code>Status :</code> <b>{tstatus}</b>"
+                   f"\n<code>Done   :</code> {task.processed_bytes()} of {task.size()}"
+                   f"\n<code>Speed  :</code> {task.speed()}"
+                   f"\n<code>ETA    :</code> {task.eta()}"
+                   f"\n<code>Past   :</code> {elapsed}"
+                   f"\n<code>User   :</code> <b>{user_tag}</b>"
+                   f"\n<code>UserID :</code> ||{task.listener.user_id}||"
+                   f"\n<code>Upload :</code> {task.listener.mode}"
+                   f"\n<code>Engine :</code> <b><i>{task.engine}</i></b>"
+                   f"\n</blockquote>"
+           )
             if hasattr(
                 task,
                 "playList"
@@ -304,14 +306,17 @@ async def get_readable_message(
                     pass
         elif tstatus == MirrorStatus.STATUS_SEEDING:
             msg += (
+                f"\n<blockquote>"
                 f"\n<code>Size   : </code>{task.size()}"
                 f"\n<code>Speed  : </code>{task.seed_speed()}"
                 f"\n<code>Upload : </code>{task.uploaded_bytes()}"
                 f"\n<code>Ratio  : </code>{task.ratio()}"
                 f"\n<code>Time   : </code>{task.seeding_time()}"
+                f"\n</blockquote>"
             )
         else:
             msg += (
+                f"\n<blockquote>"
                 f"\n<code>Status :</code> <b>{tstatus}</b>"
                 f"\n<code>Size   :</code> {task.size()}"
                 f"\n<code>Upload :</code> {task.listener.mode}"
@@ -319,6 +324,7 @@ async def get_readable_message(
                 f"\n<code>User   :</code> {user_tag}"
                 f"\n<code>UserID :</code> ||{task.listener.user_id}||"
                 f"\n<code>Engine :</code> {task.engine}"
+                f"\n</blockquote>"
             )
         msg += f"\n⚠️ {cancel_task}\n\n"
 
@@ -394,11 +400,13 @@ async def get_readable_message(
                 )
     button = buttons.build_menu(8)
     msg += (
+        f"\n<blockquote>"
         "▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬\n"
         f"<b>CPU</b>: {cpu_percent()}% | "
         f"<b>FREE</b>: {get_readable_file_size(disk_usage(DOWNLOAD_DIR).free)}\n"
         f"<b>RAM</b>: {virtual_memory().percent}% | "
         f"<b>UPTM</b>: {get_readable_time(time() - bot_start_time)}"
+        f"\n</blockquote>"
     )
     remaining_time = 86400 - (time() - bot_start_time)
     if remaining_time < 3600:
