@@ -216,7 +216,6 @@ def get_readable_message(sid: int, is_user: bool, page_no: int=1, status : str='
     for index, task in enumerate(tasks[start_position:STATUS_LIMIT + start_position], start=1):
         tstatus = task.status()
         msg += f'<b>{index+start_position}.</b> <code>{escape(str(task.name())) or "N/A"}</code>'
-        if task.listener.isgruop:
             reply_to = task.listener.message.reply_to_message
             link = task.listener.message.link if not reply_to or getattr(reply_to.from_user, 'is_bot', None) else reply_to.link
             msg += f'\n\n<b>┌ <a href="{link}"><i>{tstatus}...</i></a></b>'
