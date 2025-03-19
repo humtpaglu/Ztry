@@ -129,10 +129,10 @@ class TelegramUploader:
             if self._listener.log_message:
                 self._sent_msg = await self._listener.log_message.copy(DUMP_CHAT_ID)
             else:
-                msg = f"<b>File Name</b>: <code>{escape(self._listener.name)}</code>\n\n"
-                msg += f"<b>#Leech_Started!</b>\n"
-                msg += f"<b>Req By</b>: {self._listener.tag}\n"
-                msg += f"<b>User ID</b>: <code>{self._listener.message.from_user.id}</code>"
+                msg = f"<b>📖File Name</b>: <code>{escape(self._listener.name)}</code>\n\n"
+                msg += f"<b>🗣️#Leech_Started!</b>\n"
+                msg += f"<b>🔖Req By</b>: {self._listener.tag}\n"
+                msg += f"<b>🗽User ID</b>: <code>{self._listener.message.from_user.id}</code>"
                 )
                 # Creating the button
                 buttons = InlineKeyboardMarkup(
@@ -625,10 +625,10 @@ class TelegramUploader:
             )
             return
         if config_dict["DUMP_CHAT_ID"]:
-            msg = f"<b>File Name</b>: <code>{escape(self._listener.name)}</code>\n\n"
-            msg += f"<b>#Leech_Completed</b>!\n"
-            msg_ = f"<b>Done By</b>: {self._listener.tag}\n"
-            msg_ += f"<b>User ID</b>: <code>{self._listener.message.from_user.id}</code>"
+            msg = f"<b>📖File Name</b>: <code>{escape(self._listener.name)}</code>\n\n"
+            msg += f"<b>📁#Leech_Completed</b>!\n"
+            msg_ = f"<b>⏳Done By</b>: {self._listener.tag}\n"
+            msg_ += f"<b>🔖User ID</b>: <code>{self._listener.message.from_user.id}</code>"
             )
              # Creating the button
              buttons = InlineKeyboardMarkup(
@@ -919,4 +919,4 @@ class TelegramUploader:
     async def cancel_task(self):
         self._listener.is_cancelled = True
         LOGGER.info(f"Cancelling Upload: {self._listener.name}")
-        await self._listener.on_upload_error("Your upload has been cancelled!")
+        await self._listener.on_upload_error("🦴Your upload has been cancelled!🦴")
