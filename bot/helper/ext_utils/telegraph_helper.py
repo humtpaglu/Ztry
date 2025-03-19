@@ -83,13 +83,13 @@ class TelegraphHelper:
                     nxt_page += 1
             await self.edit_page(
                 path=path[prev_page],
-                title="@Z_Mirror Search Engine",
+                title="@Max_Leech_Zone_V5 Search Engine",
                 content=content,
             )
         return
 
 
 telegraph = TelegraphHelper(
-    "@Z_Mirror",
-    "https://github.com/Dawn-India/Z-Mirror"
+    "@Max_Leech_Zone_V5",
+    "https://telgram.me/Max_Leech_Zone_V5"
 )
