@@ -60,7 +60,6 @@ from ..ext_utils.media_utils import (
     get_multiple_frames_thumbnail
 )
 from ..telegram_helper.message_utils import delete_message
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 
 
 LOGGER = getLogger(__name__)
@@ -133,11 +132,6 @@ class TelegramUploader:
                 msg += f"<b>🗣️#Leech_Started!</b>\n"
                 msg += f"<b>🔖Req By</b>: {self._listener.tag}\n"
                 msg += f"<b>🗽User ID</b>: <code>{self._listener.message.from_user.id}</code>"
-                )
-                # Creating the button
-                buttons = InlineKeyboardMarkup(
-                [[InlineKeyboardButton("📥 View In Bot PM", url=f"tg://user?id={self._listener.message.from_user.id}")]]
-                )
                 self._sent_msg = await bot.send_message( # type: ignore
                     DUMP_CHAT_ID,
                     msg,
@@ -629,11 +623,6 @@ class TelegramUploader:
             msg += f"<b>📁#Leech_Completed</b>!\n"
             msg_ = f"<b>⏳Done By</b>: {self._listener.tag}\n"
             msg_ += f"<b>🔖User ID</b>: <code>{self._listener.message.from_user.id}</code>"
-            )
-             # Creating the button
-             buttons = InlineKeyboardMarkup(
-             [[InlineKeyboardButton("📥 View In Bot PM", url=f"tg://user?id={self._listener.message.from_user.id}")]]
-            )
             if self._sent_msg is not None:
                 await self._sent_msg.reply(
                     text=msg + msg_,
